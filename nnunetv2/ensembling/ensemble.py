@@ -47,9 +47,12 @@ def merge_files(
 ):
     # load the pkl file associated with the first file in list_of_files
     properties = load_pickle(list_of_files[0][:-4] + ".pkl")
+    print(properties)
     # load and average predictions
     probabilities = average_probabilities(list_of_files)
+    print(probabilities.shape)
     segmentation = label_manager.convert_logits_to_segmentation(probabilities)
+    print(segmentation.shape)
     image_reader_writer.write_seg(
         segmentation, output_filename_truncated + output_file_ending, properties
     )
