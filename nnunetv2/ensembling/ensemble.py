@@ -119,17 +119,16 @@ def ensemble_folders(
     shutil.copy(join(list_of_input_folders[0], "dataset.json"), output_folder)
 
     num_preds = len(s)
-    _ = map(
+    for _ in map(
         merge_files,
-        zip(
-            lists_of_lists_of_files,
-            output_files_truncated,
-            [dataset_json["file_ending"]] * num_preds,
-            [image_reader_writer] * num_preds,
-            [label_manager] * num_preds,
-            [save_merged_probabilities] * num_preds,
-        ),
-    )
+        lists_of_lists_of_files,
+        output_files_truncated,
+        [dataset_json["file_ending"]] * num_preds,
+        [image_reader_writer] * num_preds,
+        [label_manager] * num_preds,
+        [save_merged_probabilities] * num_preds,
+    ):
+        pass
 
 
 def entry_point_ensemble_folders():
